@@ -3,7 +3,7 @@
 #include "includes.h"
 
 char** jouer(char** array, int longueur, int largeur){
-    int entree = 0;
+    char entree;
     int nbr_de_tours = 1;
     // FLAG
     int flagArrayToCopyIn = 0;  // SI 0 -> array = principal, si 1 -> clonedArray = principal
@@ -35,13 +35,11 @@ char** jouer(char** array, int longueur, int largeur){
         }
 
         printf("\n Voulez vous continuer ? : ");
-        scanf("%d", &entree);
-        printf("\n\n");
-        printf("%d", entree);
+        scanf(" %c", &entree);
         printf("\n\n");
         nbr_de_tours++;
 
-    }while(entree != 0); 
+    }while(entree != 'f'); 
 
 
 
