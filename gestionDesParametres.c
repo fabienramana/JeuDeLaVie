@@ -192,14 +192,20 @@ int* gestionDesParametresInteger(int argc, char** argv){
     // FAIRE GESTION DES ERREURS
     
     // -d
-    if(toReturn[0] != 0 || toReturn[1] != 0){
-        if(toReturn[0] > 256 || toReturn[1] > 256){
-            printf("ERROR : la longueur ou la largeur du tableau ne peut pas etre superieur a 256");
-            flagParameters = -1;
-            toReturn[5] = flagParameters;
-            return toReturn;
-        }
-        printf("ERROR : la longueur ou la largeur du tableau ne peut pas etre égal à 0");
+    if(toReturn[0] == 0 || toReturn[1] == 0){
+        printf("ERROR : la longueur ou la largeur du tableau ne peut pas etre égal à 0\n");
+        flagParameters = -1;
+        toReturn[5] = flagParameters;
+        return toReturn;
+    }
+    if(toReturn[0] > 256 || toReturn[1] > 256){
+        printf("ERROR : la longueur ou la largeur du tableau ne peut pas etre superieur a 256\n");
+        flagParameters = -1;
+        toReturn[5] = flagParameters;
+        return toReturn;
+    }
+    if((toReturn[0] == -1 && toReturn[1] != -1) || (toReturn[0] != -1 && toReturn[1] == -1)){
+        printf("ERROR : la longueur ou la largeur du tableau n'a pas été déclaré\n");
         flagParameters = -1;
         toReturn[5] = flagParameters;
         return toReturn;
@@ -207,16 +213,16 @@ int* gestionDesParametresInteger(int argc, char** argv){
 
     // -f
     if(toReturn[2] == 0){
-        if(toReturn[2] >= 100){
-            printf("ERROR : le pourcentage de remplissage ne peut pas etre égal ou superieur à 100");
-            flagParameters = -1;
-            toReturn[5] = flagParameters;
-            return toReturn;    
-        }
-        printf("ERROR : le pourcentage de remplissage ne peut pas etre égal à 0");
+        printf("ERROR : le pourcentage de remplissage ne peut pas etre égal à 0\n");
         flagParameters = -1;
         toReturn[5] = flagParameters;
         return toReturn;
+    }
+    if(toReturn[2] >= 100){
+        printf("ERROR : le pourcentage de remplissage ne peut pas etre égal ou superieur à 100\n");
+        flagParameters = -1;
+        toReturn[5] = flagParameters;
+        return toReturn;    
     }
 
     //-r
