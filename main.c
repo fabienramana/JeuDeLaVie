@@ -9,7 +9,7 @@ int main (int argc, char **argv){
     int i=0;
     int pourcentRemplissage = 20;
     // ******* //
-    int flagParameters = 0;
+    //int flagParameters = 0;
     char** array;
     int* gestionParametreIntegerArray;
 
