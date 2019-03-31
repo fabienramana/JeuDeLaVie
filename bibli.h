@@ -8,7 +8,7 @@ char** jouer(char **array, int longueur, int largeur);
 
 char** copier(char **arrayToCopy, char ** arrayToCopyIn, int longueur, int largeur);
 
-//void sauvegarder(char** array, int longueur, int largeur);
+void sauvegarder(char** array, int longueur, int largeur);
 
 char** iterationDuJeu(char** array, char** arrayToCopyIn, int longueur, int largeur);
 

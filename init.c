@@ -24,7 +24,7 @@ char** initialisation(int longueur, int largeur, int pourcentRemplissage){
     }
 
     i=0;
-    while(i != pourcentRemplissage){
+    while(i < pourcentRemplissage){
         rankOfI = rand_a_b(0, longueur);
         rankOfJ = rand_a_b(0, largeur);
         

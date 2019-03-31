@@ -10,9 +10,36 @@ char** copier(char **arrayToCopy, char ** arrayToCopyIn, int longueur, int large
     return arrayToCopyIn;
 }
 
-/*void sauvegarder(char** array, int longueur, int largeur){
+void sauvegarder(char** array, int longueur, int largeur){
+    FILE* f;
+    int toInsert = 0;
+    //SUPPRIMER FICHIER SI DEJA EXISTANT
 
-}*/
+    toInsert += 1;
+    f = fopen("sauvegarde","w+");
+    fwrite(&longueur,sizeof(int), 1, f);
+    fwrite(&largeur,sizeof(int), 1, f);
+
+    for(int i=0;i<longueur;i++){
+        for(int j=0;j<largeur;j++){
+            if(array[i][j] == '_'){
+                toInsert = 1;
+                fwrite(&toInsert, sizeof(int), 1, f);
+            }
+            else if (array[i][j] == 'X'){
+                toInsert = 0;
+                fwrite(&toInsert, sizeof(int), 1, f);
+            }
+        }
+    }
+
+    
+
+    fclose(f);
+
+
+
+}
 
 void afficherTableau(char** array, int longueur, int largeur){
 

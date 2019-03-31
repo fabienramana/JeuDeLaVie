@@ -18,6 +18,7 @@ int main (int argc, char **argv){
     gestionParametreIntegerArray = gestionDesParametresInteger(argc, argv);
 
     if(gestionParametreIntegerArray[5] == -1){
+        // FREE ICI AUSSI
         return 0;
     }
     else{
