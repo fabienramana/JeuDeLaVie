@@ -10,6 +10,8 @@ char** copier(char **arrayToCopy, char ** arrayToCopyIn, int longueur, int large
 
 void sauvegarder(char** array, int longueur, int largeur);
 
+void lireFichierBinaire();
+
 char** iterationDuJeu(char** array, char** arrayToCopyIn, int longueur, int largeur);
 
 void afficherTableau(char** array, int longueur, int largeur);

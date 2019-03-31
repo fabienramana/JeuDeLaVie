@@ -32,12 +32,7 @@ void sauvegarder(char** array, int longueur, int largeur){
             }
         }
     }
-
-    
-
     fclose(f);
-
-
 
 }
 
@@ -51,6 +46,24 @@ void afficherTableau(char** array, int longueur, int largeur){
     }
 }
 
+void lireFichierBinaire(){
+    FILE* f;
+    int N, M, number;
+    f = fopen("sauvegarde", "r");
+
+    fread(&N, sizeof(int), 1, f);
+    fread(&M, sizeof(int), 1, f);
+
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
+            fread(&number, sizeof(int), 1, f);
+            printf("%d", number);
+        }
+        printf("\n");
+    }
+
+    fclose(f);
+}
 
 char** iterationDuJeu(char** array, char** arrayToCopyIn, int longueur, int largeur){
 
