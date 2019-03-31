@@ -53,14 +53,6 @@ int main (int argc, char **argv){
 
 
     array = initialisation(longueur, largeur, pourcentRemplissage);     // INITIALISE LE TABLEAU AVEC LES PARAMETRES DONNE
-    printf("\n\n");
-    for(int j=0;j<longueur;j++){
-        for(int k=0;k<largeur;k++){
-            printf("%c",array[j][k]);
-        }
-        printf("\n");
-    }
-    printf("\n\n");
     array = jouer(array, longueur, largeur);        // RENTRE DANS LE JEU
 
     // PARTIE POUR LIBERER L'ESPACE MEMOIRE
