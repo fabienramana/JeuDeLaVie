@@ -3,8 +3,8 @@
 #include "includes.h"
 
 char** jouer(char** array, int longueur, int largeur){
-    int entree = 0;
-    int nbr_de_tours = 1;
+    char entree;
+    int nbr_de_tours = 0;
     // FLAG
     int flagArrayToCopyIn = 0;  // SI 0 -> array = principal, si 1 -> clonedArray = principal
 
@@ -16,32 +16,55 @@ char** jouer(char** array, int longueur, int largeur){
     
 
     printf("Nous allons pouvoir commencer ! \n");
+    
+    printf("Tour n 0 : \n\n");
+    afficherTableau(array, longueur, largeur);
+    printf("\n");
 
     do {    
         printf("Tour n %d : ", nbr_de_tours);
         printf("\n\n");
 
-        if(flagArrayToCopyIn == 0){
-            clonedArray = copier(array, clonedArray, longueur, largeur);
-            clonedArray = iterationDuJeu(array, clonedArray, longueur, largeur);
-            afficherTableau(clonedArray, longueur, largeur);
-            flagArrayToCopyIn = 1;
+        if(nbr_de_tours == 0){
+
         }
         else{
-            array = copier(clonedArray, array, longueur, largeur);
-            array = iterationDuJeu(clonedArray, array, longueur, largeur);
-            afficherTableau(array, longueur, largeur);
-            flagArrayToCopyIn = 0;
+            if(flagArrayToCopyIn == 0){
+                clonedArray = copier(array, clonedArray, longueur, largeur);
+                clonedArray = iterationDuJeu(array, clonedArray, longueur, largeur);
+                afficherTableau(clonedArray, longueur, largeur);
+                flagArrayToCopyIn = 1;
+            }
+            else{
+                array = copier(clonedArray, array, longueur, largeur);
+                array = iterationDuJeu(clonedArray, array, longueur, largeur);
+                afficherTableau(array, longueur, largeur);
+                flagArrayToCopyIn = 0;
+            }    
         }
 
         printf("\n Voulez vous continuer ? : ");
-        scanf("%d", &entree);
-        printf("\n\n");
-        printf("%d", entree);
+        scanf(" %c", &entree);
+        if(entree != 10){
+            if(entree == 's' || entree == 'S'){
+                if(flagArrayToCopyIn == 0){
+                    sauvegarder(array, longueur, largeur);
+                    break;
+                }
+                else{
+                    sauvegarder(clonedArray, longueur, largeur);
+                    break;
+                }
+            }
+            else{
+                printf("\nEntree non valide ! \n");
+            }
+        }
+        
         printf("\n\n");
         nbr_de_tours++;
 
-    }while(entree != 0); 
+    }while(entree != 'f'); 
 
 
 

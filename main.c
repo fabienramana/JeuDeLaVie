@@ -9,7 +9,7 @@ int main (int argc, char **argv){
     int i=0;
     int pourcentRemplissage = 20;
     // ******* //
-    int flagParameters = 0;
+    //int flagParameters = 0;
     char** array;
     int* gestionParametreIntegerArray;
 
@@ -18,18 +18,49 @@ int main (int argc, char **argv){
     gestionParametreIntegerArray = gestionDesParametresInteger(argc, argv);
 
     if(gestionParametreIntegerArray[5] == -1){
+        // FREE ICI AUSSI
         return 0;
     }
-
-    for(int i=0;i<6;i++){   // CA MARCHE
-        printf("%d\n", gestionParametreIntegerArray[i]);
+    else{
+        if(gestionParametreIntegerArray[0] != -1 && gestionParametreIntegerArray[1] != -1){
+            longueur = gestionParametreIntegerArray[0];
+            printf("\nlongueur : %d", gestionParametreIntegerArray[0]);
+            largeur = gestionParametreIntegerArray[1];
+            printf("\nlargeur : %d", gestionParametreIntegerArray[1]);
+        }
+        if(gestionParametreIntegerArray[2] != -1){
+            pourcentRemplissage = gestionParametreIntegerArray[2];
+            printf("\npourcent : %d", gestionParametreIntegerArray[2]);
+        }
     }
-    return 0;
+
+    printf("pourcent : %d\n", pourcentRemplissage);
+   
+        // TEST POUR FREE LE TABLEAU //
+    /*for(int i=0;i<6;i++){
+       free(gestionParametreIntegerArray[i]);
+   }
+    free(*gestionParametreIntegerArray);
+    free(gestionParametreIntegerArray);
+
+    printf("\nlongueur : %d", longueur);
+    printf("\nlargeur : %d", largeur);
+    printf("\npourcent : %d", pourcentRemplissage);
+
+    return 0; */
 
     // NE PAS OUBLIER DE FREE LES TABLEAUX
 
 
     array = initialisation(longueur, largeur, pourcentRemplissage);     // INITIALISE LE TABLEAU AVEC LES PARAMETRES DONNE
+    printf("\n\n");
+    for(int j=0;j<longueur;j++){
+        for(int k=0;k<largeur;k++){
+            printf("%c",array[j][k]);
+        }
+        printf("\n");
+    }
+    printf("\n\n");
     array = jouer(array, longueur, largeur);        // RENTRE DANS LE JEU
 
     // PARTIE POUR LIBERER L'ESPACE MEMOIRE
