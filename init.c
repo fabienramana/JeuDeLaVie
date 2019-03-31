@@ -12,8 +12,6 @@ char** initialisation(int longueur, int largeur, int pourcentRemplissage){
     srand(time(NULL));
     pourcentRemplissage = ((largeur*longueur) *pourcentRemplissage) /100;
 
-    printf("\nafter operation %d\n", pourcentRemplissage);
-
     char** array = (char**) malloc(sizeof(char*) * longueur);   // NE PAS OUBLIER DE FREE
     for(i=0;i<longueur; i++){
         array[i] = (char*) malloc(sizeof(char) * largeur);
@@ -47,7 +45,6 @@ char** initialisation(int longueur, int largeur, int pourcentRemplissage){
             }
         }
     }
-    printf("cpt : %d\n\n", cpt);
 
 
     printf("\n");

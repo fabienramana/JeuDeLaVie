@@ -184,6 +184,24 @@ int* gestionDesParametresInteger(int argc, char** argv){
                             flagParameters++;
                         }
                     }
+                    if(argv[i][1] == 'h'){
+                        printf("\n /**   AIDE DU JEU    **/\n");
+                        printf("\nLe jeu se déroule de la manière suivante : On a un tableau \n");
+                        printf("en deux dimensions où chacune des cases représente une cellule \n");
+                        printf("morte ou en vie. Celles-ci évoluent en fonctions des cellules alentours. \n");
+
+                        printf("\n Le paramètre -d permet d’indiquer les dimensions de la grille, au format ​ largeur​ x ​ hauteur.");
+                        printf(" Par exemple, pour une grille de 10 cellules de côté, on indiquera ​ -d 10x10\n");
+                        printf("Si rien n’est indiqué, et qu’aucun fichier n’est chargé, on commencera avec une grille de 80x80 par défaut\n");
+                        printf("On considère que les grilles ne peuvent faire plus de 256 de côté. \n");
+
+                        printf("\nLe paramètre -f représente le pourcentage de remplissage, exprimé par un entier de 0 à 100.\n");
+                        printf("Par exemple, pour remplir la grille à moitié, on indiquera ​ -f 50.\n");
+                        printf("Si rien n’est indiqué et qu’aucun fichier n’est chargé,\n");
+                        printf("on commencera avec un taux de remplissage de 20 pourcents\n");
+
+                        printf("\n\n");
+                    }
                 }
             }
         }
