@@ -30,11 +30,9 @@ int main (int argc, char **argv){
         }
         if(gestionParametreIntegerArray[2] != -1){
             pourcentRemplissage = gestionParametreIntegerArray[2];
-            printf("\npourcent : %d", gestionParametreIntegerArray[2]);
+            printf("\npourcent : %d\n", gestionParametreIntegerArray[2]);
         }
     }
-
-    printf("pourcent : %d\n", pourcentRemplissage);
    
         // TEST POUR FREE LE TABLEAU //
     /*for(int i=0;i<6;i++){
