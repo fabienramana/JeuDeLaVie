@@ -42,7 +42,7 @@ char** jouer(char** array, int longueur, int largeur){
         }
 
         while(1){
-            printf("\n Voulez vous continuer ? : ");
+            printf("\nVoulez vous continuer ? : ");
             scanf(" %c", &entree);
             if(entree != 'o'){
                 if(entree == 's' || entree == 'S'){
@@ -75,12 +75,52 @@ char** jouer(char** array, int longueur, int largeur){
                         }
                         else if(choix == 'n' || choix == 'N'){
                             printf("\nTres bien.\n");
+                            break;
                         }
                         else{
                             printf("\n Choix invalide ! \n");
                         }
                     }
                     break;
+                }
+                else if(entree == 'n' || entree == 'N'){
+                    int toAdd = 0;
+                    while(1){
+                        printf("\nChoisissez le nombre d'iterations à ajouter : ");
+                        scanf("%d", &toAdd);
+                        printf("\n%d", toAdd);
+                        getchar();
+                        printf("\n\n");
+                        if(toAdd <= 0){
+                            printf("\nNombre invalide ! ");
+                        }
+                        else{
+                            for(int i=0;i<toAdd;i++){
+                                if(flagArrayToCopyIn == 0){
+                                    clonedArray = copier(array, clonedArray, longueur, largeur);
+                                    clonedArray = iterationDuJeu(array, clonedArray, longueur, largeur);
+                                    flagArrayToCopyIn = 1;
+                                }
+                                else{
+                                    array = copier(clonedArray, array, longueur, largeur);
+                                    array = iterationDuJeu(clonedArray, array, longueur, largeur);
+                                    flagArrayToCopyIn = 0;
+                                } 
+                            }
+                            nbr_de_tours += toAdd;
+                            if(flagArrayToCopyIn == 0){
+                                printf("Tour n %d : ", nbr_de_tours);
+                                printf("\n\n");
+                                afficherTableau(array, longueur, largeur);
+                            }
+                            else{
+                                printf("Tour n %d : ", nbr_de_tours);
+                                printf("\n\n");
+                                afficherTableau(clonedArray, longueur, largeur);
+                            }
+                            break;
+                        }
+                    }
                 }
                 else{
                     printf("\nEntree non valide ! \n");
