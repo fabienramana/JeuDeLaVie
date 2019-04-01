@@ -19,7 +19,7 @@ char** initialisation(int longueur, int largeur, int pourcentRemplissage){
 
     for(i=0;i<longueur;i++){
         for(j=0;j<largeur;j++){
-            array[i][j] = 'X';
+            array[i][j] = '_';
         }
     }
 
@@ -28,11 +28,11 @@ char** initialisation(int longueur, int largeur, int pourcentRemplissage){
         rankOfI = rand_a_b(0, longueur);
         rankOfJ = rand_a_b(0, largeur);
         
-        if(array[rankOfI][rankOfJ] == '_'){
+        if(array[rankOfI][rankOfJ] == 'X'){
             i--;
         }
         else{
-        array[rankOfI][rankOfJ] = '_';
+        array[rankOfI][rankOfJ] = 'X';
         }
 
         i++;
@@ -40,7 +40,7 @@ char** initialisation(int longueur, int largeur, int pourcentRemplissage){
     cpt=0;
     for(i=0;i<longueur;i++){
         for(j=0;j<largeur;j++){
-            if(array[i][j] == '_'){
+            if(array[i][j] == 'X'){
                 cpt++;
             }
         }
