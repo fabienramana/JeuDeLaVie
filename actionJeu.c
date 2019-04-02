@@ -13,6 +13,11 @@ char** copier(char **arrayToCopy, char ** arrayToCopyIn, int longueur, int large
 int getSize(int whichSize){
     FILE* f;
     int longueur, largeur;
+    if(access("sauvegarde", F_OK) == -1){
+        printf("Le fichier de sauvegarde n'existe pas...\n");
+        return 0;
+    }
+
     f = fopen("sauvegarde", "r");
 
     fread(&longueur, sizeof(int), 1, f);

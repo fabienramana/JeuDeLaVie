@@ -45,6 +45,8 @@ int main (int argc, char **argv){
     }
     else{
         longueur = getSize(0); //RETOURNE LA LONGUEUR
+        if(longueur == 0)
+            return 0;
         largeur = getSize(1); //RETOURNE LA LARGEUR
         array = getArray(); // RETOURNE LE TABLEAU SAUVEGARDE
         printf("\nChargement bien effectué !\n\n");
