@@ -38,12 +38,12 @@ int convertCharToInt(char c){
 }
 
 
-int* gestionDesParametresInteger(int argc, char** argv){
+int* gestionDesParametres(int argc, char** argv){
    int flagParameters = 0;
-   int* toReturn = (int*) malloc(sizeof(int) * 9);  //case 0 : -d (longueur), case 1 : -d (largeur) case 2 : -f, case 3 : -r (naitre), case 4 : -r (mort)
-   int j=0;                                     //, case 5 : flagParameters, case 6: parametre -d donné, case è :parametre -r donné, case 8 : parametre -r donné
+   int* toReturn = (int*) malloc(sizeof(int) * 8);  //case 0 : -d (longueur), case 1 : -d (largeur) case 2 : -f, case 3 : -r (naitre), case 4 : -r (mort)
+   int j=0;                                     //, case 5 : flagParameters, case 6 : -l, case 7 : -h
 
-   for(int i=0;i<6;i++){
+   for(int i=0;i<8;i++){
        toReturn[i] = -1;
    }
 
@@ -99,7 +99,6 @@ int* gestionDesParametresInteger(int argc, char** argv){
                                     return toReturn;
                                 }
                             }
-                            toReturn[6] = 1;
                             flagParameters++;
                         }
                     }
@@ -128,7 +127,6 @@ int* gestionDesParametresInteger(int argc, char** argv){
                                     return toReturn;
                                 }
                             }
-                            toReturn[7] = 1;
                             flagParameters++;
                         }
                     }
@@ -180,7 +178,6 @@ int* gestionDesParametresInteger(int argc, char** argv){
                                     return toReturn;
                                 }
                             }
-                            toReturn[8] = 1;
                             flagParameters++;
                         }
                     }
@@ -190,7 +187,7 @@ int* gestionDesParametresInteger(int argc, char** argv){
                         printf("en deux dimensions où chacune des cases représente une cellule \n");
                         printf("morte ou en vie. Celles-ci évoluent en fonctions des cellules alentours. \n");
 
-                        printf("\n Le paramètre -d permet d’indiquer les dimensions de la grille, au format ​ largeur​ x ​ hauteur.");
+                        printf("\nLe paramètre -d permet d’indiquer les dimensions de la grille, au format ​ largeur​ x ​ hauteur.");
                         printf(" Par exemple, pour une grille de 10 cellules de côté, on indiquera ​ -d 10x10\n");
                         printf("Si rien n’est indiqué, et qu’aucun fichier n’est chargé, on commencera avec une grille de 80x80 par défaut\n");
                         printf("On considère que les grilles ne peuvent faire plus de 256 de côté. \n");
@@ -200,7 +197,23 @@ int* gestionDesParametresInteger(int argc, char** argv){
                         printf("Si rien n’est indiqué et qu’aucun fichier n’est chargé,\n");
                         printf("on commencera avec un taux de remplissage de 20 pourcents\n");
 
-                        printf("\n\n");
+                        printf("\nLe paramètre -l permet de charger un fichier de sauvegarde (appelé automatique 'sauvegarde'), ce qui permet de");
+                        printf("\nreprendre une partie là où on l'avait laissé !\n");
+
+                        printf("\nL'affichage de l'aide ne permet pas de lancer une partie, veuillez relancer le programme sans le parametre -h\n\n");
+
+                        printf("/***********************/\n");
+                        toReturn[7] = 1;
+                        flagParameters++;
+                    }
+                    if(argv[i][1] == 'l'){
+                        if(toReturn[0] != -1 || toReturn[1] != -1 || toReturn[2] != -1){
+                            printf("\nVous avez demandé à charger votre derniere partie.");
+                            printf("\nLes parametres saisis precedemment ne seront donc pas pris en compte\n");
+                            printf("Le fichier de sauvegarde va être chargé ! \n");
+                        }
+                        toReturn[6] = 1;
+                        flagParameters++;
                     }
                 }
             }
@@ -253,7 +266,3 @@ int* gestionDesParametresInteger(int argc, char** argv){
     return toReturn;
 
 }
-
-/*char* gestionDesErreursFileAndHelp(int argc, char** argv, int flagParameters){
-    
-}*/

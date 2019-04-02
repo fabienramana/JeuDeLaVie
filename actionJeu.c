@@ -10,6 +10,54 @@ char** copier(char **arrayToCopy, char ** arrayToCopyIn, int longueur, int large
     return arrayToCopyIn;
 }
 
+int getSize(int whichSize){
+    FILE* f;
+    int longueur, largeur;
+    f = fopen("sauvegarde", "r");
+
+    fread(&longueur, sizeof(int), 1, f);
+    fread(&largeur, sizeof(int), 1, f);
+
+    if(whichSize == 0){
+        return longueur;
+    }
+    else{
+        return largeur;
+    }
+
+    fclose(f);
+}
+
+char** getArray(){
+    FILE* f;
+    int longueur, largeur, number;
+    f = fopen("sauvegarde", "r");
+
+    fread(&longueur, sizeof(int), 1, f);
+    fread(&largeur, sizeof(int), 1, f);
+
+    char** array = (char**) malloc(sizeof(char*) * longueur);   // NE PAS OUBLIER DE FREE
+    for(int i=0;i<longueur; i++){
+        array[i] = (char*) malloc(sizeof(char) * largeur);
+    }
+
+    for(int i=0;i<longueur;i++){
+        for(int j=0;j<largeur;j++){
+            fread(&number, sizeof(int), 1, f);
+            if(number == 1){
+                array[i][j] = 'X';
+            }
+            else{
+                array[i][j] = '_';
+            }
+        }
+    }
+
+    fclose(f);
+
+    return array;
+}
+
 void sauvegarder(char** array, int longueur, int largeur){
     FILE* f;
     int toInsert = 0;

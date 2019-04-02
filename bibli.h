@@ -16,6 +16,10 @@ char** iterationDuJeu(char** array, char** arrayToCopyIn, int longueur, int larg
 
 void afficherTableau(char** array, int longueur, int largeur);
 
-int* gestionDesParametresInteger(int argc, char** argv);
+int* gestionDesParametres(int argc, char** argv);
 
 int convertCharToInt(char c);
+
+int getSize(int whichSize);
+
+char** getArray();

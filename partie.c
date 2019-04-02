@@ -49,27 +49,26 @@ char** jouer(char** array, int longueur, int largeur){
                     if(flagArrayToCopyIn == 0){
                         sauvegarder(array, longueur, largeur);
                         printf("\n Sauvegarde bien effectuée !\n");
-                        break;
+
                     }
                     else{
                         sauvegarder(clonedArray, longueur, largeur);
                         printf("\n Sauvegarde bien effectuée !\n");
-                        break;
                     }
                 }
                 else if(entree == 'q' || entree == 'Q'){
                     while(1){
-                        printf("\n Voulez vous sauvegarder cette partie ? (o/n): ");
+                        printf("\nVoulez vous sauvegarder cette partie ? (o/n): ");
                         scanf(" %c", &choix);
                         if(choix == 'o' || choix == 'O'){
                             if(flagArrayToCopyIn == 0){
                                 sauvegarder(array, longueur, largeur);
-                                printf("\n Sauvegarde bien effectuée !\n");
+                                printf("\nSauvegarde bien effectuée !\n");
                                 break;
                             }
                             else{
                                 sauvegarder(clonedArray, longueur, largeur);
-                                printf("\n Sauvegarde bien effectuée !\n");
+                                printf("\nSauvegarde bien effectuée !\n");
                                 break;
                             }
                         }
@@ -78,7 +77,7 @@ char** jouer(char** array, int longueur, int largeur){
                             break;
                         }
                         else{
-                            printf("\n Choix invalide ! \n");
+                            printf("\nChoix invalide ! \n");
                         }
                     }
                     break;

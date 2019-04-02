@@ -8,49 +8,47 @@ int main (int argc, char **argv){
     int longueur = 80, largeur = 80;
     int i=0;
     int pourcentRemplissage = 20;
+    int alreadyInitialized = 0;
     // ******* //
-    //int flagParameters = 0;
     char** array;
-    int* gestionParametreIntegerArray;
+    int* gestionParametresArray;
 
-    // 1ER PARAMETRE = EXECUTABLE
 
-    gestionParametreIntegerArray = gestionDesParametresInteger(argc, argv);
+    gestionParametresArray = gestionDesParametres(argc, argv);
 
-    if(gestionParametreIntegerArray[5] == -1){
-        // FREE ICI AUSSI
+    if(gestionParametresArray[5] == -1){
+        free(gestionParametresArray);
         return 0;
     }
     else{
-        if(gestionParametreIntegerArray[0] != -1 && gestionParametreIntegerArray[1] != -1){
-            longueur = gestionParametreIntegerArray[0];
-            printf("\nlongueur : %d", gestionParametreIntegerArray[0]);
-            largeur = gestionParametreIntegerArray[1];
-            printf("\nlargeur : %d", gestionParametreIntegerArray[1]);
+        if(gestionParametresArray[7] == 1){
+            return 0;   // SI AFFICHAGE DE L'AIDE
         }
-        if(gestionParametreIntegerArray[2] != -1){
-            pourcentRemplissage = gestionParametreIntegerArray[2];
-            printf("\npourcent : %d\n", gestionParametreIntegerArray[2]);
+        if(gestionParametresArray[0] != -1 && gestionParametresArray[1] != -1){
+            longueur = gestionParametresArray[0];
+            largeur = gestionParametresArray[1];
+            printf("\nlongueur : %d", gestionParametresArray[0]);
+            printf("\nlargeur : %d", gestionParametresArray[1]);
+        }
+        if(gestionParametresArray[2] != -1){
+            pourcentRemplissage = gestionParametresArray[2];
+            printf("\npourcentage de remplissage : %d\n", gestionParametresArray[2]);
+        }
+        if(gestionParametresArray[6] == 1){
+            alreadyInitialized = 1;
         }
     }
-   
-        // TEST POUR FREE LE TABLEAU //
-    /*for(int i=0;i<6;i++){
-       free(gestionParametreIntegerArray[i]);
-   }
-    free(*gestionParametreIntegerArray);
-    free(gestionParametreIntegerArray);
+    free(gestionParametresArray);
 
-    printf("\nlongueur : %d", longueur);
-    printf("\nlargeur : %d", largeur);
-    printf("\npourcent : %d", pourcentRemplissage);
-
-    return 0; */
-
-    // NE PAS OUBLIER DE FREE LES TABLEAUX
-
-
-    array = initialisation(longueur, largeur, pourcentRemplissage);     // INITIALISE LE TABLEAU AVEC LES PARAMETRES DONNE
+    if(alreadyInitialized == 0){
+        array = initialisation(longueur, largeur, pourcentRemplissage);     // INITIALISE LE TABLEAU AVEC LES PARAMETRES DONNE
+    }
+    else{
+        longueur = getSize(0); //RETOURNE LA LONGUEUR
+        largeur = getSize(1); //RETOURNE LA LARGEUR
+        array = getArray(); // RETOURNE LE TABLEAU SAUVEGARDE
+        printf("\nChargement bien effectué !\n\n");
+    }
     array = jouer(array, longueur, largeur);        // RENTRE DANS LE JEU
 
     // PARTIE POUR LIBERER L'ESPACE MEMOIRE
